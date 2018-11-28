@@ -1,0 +1,16 @@
+<div class="row">
+    <% @tasks.each do |task| %>
+        <div class="col-md-4">
+            <%= image_tag task.photo, class: 'img-fluid' %>
+            <h1>
+                <%= link_to task.title, task_path(id: task.id) %>
+            </h1>
+            <p><%= task.description %></p>
+            <% if task.completed_for?(current_user) %>
+                <%= link_to "No listo", task_complete_path(id: task.id), class: 'btn btn-danger' %>
+            <% else %>
+                <%= link_to "Listo", task_complete_path(id: task.id), class: 'btn btn-success' %>
+            <% end %>
+        </div>
+    <% end %>
+</div>
