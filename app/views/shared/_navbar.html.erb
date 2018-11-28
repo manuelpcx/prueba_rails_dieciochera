@@ -11,9 +11,7 @@
                     <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete %>
                 </li>
                 <li>
-                  <% @users.each do |user| %>
-                    <p>  tareas realizadas: <%=  user.tasks.count%></p>
-                  <% end %>
+                  Tareas Realizadas: <%= @users.tasks.count %>
                 </li>
             <% end %>
         </ul>

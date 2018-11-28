@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
-    @users = User.all
+    @users = User.find_by(id: current_user.id)
   end
 
   def complete
@@ -31,7 +31,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @users = User.all
+    @users = User.find_by(id: current_user.id)
     @task = Task.find(params[:id])
     @user_tasks = UserTask.where(task: @task).order(updated_at: :desc).limit(5)
     @user_task = UserTask.where(task: @task).order(updated_at: :desc)
